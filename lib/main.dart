@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/page/characters_page.dart';
 import 'package:flutter_graphql/page/countries_page.dart';
+import 'package:flutter_graphql/page/mutation_page.dart';
 
 import 'code_page.dart';
 
@@ -43,13 +44,27 @@ class _HomePage extends StatelessWidget {
             ),
             const Divider(),
             ListTile(
-              title: const Text('Countries'),
+              title: const Text('Countries ❄Query❄'),
               trailing: const Icon(Icons.arrow_right_sharp),
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
                       return const CountriesPage();
+                    },
+                  ),
+                );
+              },
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text('Countries ❄Mutation❄'),
+              trailing: const Icon(Icons.arrow_right_sharp),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const MutationPage();
                     },
                   ),
                 );

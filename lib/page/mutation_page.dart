@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class CountriesPage extends StatelessWidget {
-  const CountriesPage({super.key});
+class MutationPage extends StatelessWidget {
+  const MutationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,24 +11,24 @@ class CountriesPage extends StatelessWidget {
         GraphQLClient(link: httpLink, cache: GraphQLCache()));
     return GraphQLProvider(
       client: client,
-      child: const ContriesViewPage(),
+      child: const MutationViewPage(),
     );
   }
 }
 
-class ContriesViewPage extends StatefulWidget {
-  const ContriesViewPage({super.key});
+class MutationViewPage extends StatefulWidget {
+  const MutationViewPage({super.key});
 
   @override
-  State<ContriesViewPage> createState() => _ContriesViewPageState();
+  State<MutationViewPage> createState() => _MutationViewPageState();
 }
 
-class _ContriesViewPageState extends State<ContriesViewPage> {
+class _MutationViewPageState extends State<MutationViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Countries ❄Query❄'),
+        title: const Text('Countries ❄Mutation❄'),
       ),
       body: Query(
         options: QueryOptions(document: gql(r"""

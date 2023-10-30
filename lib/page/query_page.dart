@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class CountriesPage extends StatelessWidget {
-  const CountriesPage({super.key});
+class QueryPage extends StatelessWidget {
+  const QueryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +11,19 @@ class CountriesPage extends StatelessWidget {
         GraphQLClient(link: httpLink, cache: GraphQLCache()));
     return GraphQLProvider(
       client: client,
-      child: const ContriesViewPage(),
+      child: const QueryViewPage(),
     );
   }
 }
 
-class ContriesViewPage extends StatefulWidget {
-  const ContriesViewPage({super.key});
+class QueryViewPage extends StatefulWidget {
+  const QueryViewPage({super.key});
 
   @override
-  State<ContriesViewPage> createState() => _ContriesViewPageState();
+  State<QueryViewPage> createState() => _QueryViewPageState();
 }
 
-class _ContriesViewPageState extends State<ContriesViewPage> {
+class _QueryViewPageState extends State<QueryViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

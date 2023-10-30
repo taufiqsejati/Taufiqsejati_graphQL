@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/page/characters_page.dart';
-import 'package:flutter_graphql/page/countries_page.dart';
+import 'package:flutter_graphql/page/query_page.dart';
 import 'package:flutter_graphql/page/mutation_page.dart';
 
 import 'code_page.dart';
@@ -50,7 +50,7 @@ class _HomePage extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return const CountriesPage();
+                      return const QueryPage();
                     },
                   ),
                 );

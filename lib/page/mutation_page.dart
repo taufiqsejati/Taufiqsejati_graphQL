@@ -6,9 +6,20 @@ class MutationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HttpLink httpLink = HttpLink("https://countries.trevorblades.com/");
+    final HttpLink httpLink =
+        HttpLink("https://verified-mosquito-75.hasura.app/v1/graphql");
+    final AuthLink authLink = AuthLink(
+      headerKey: 'x-hasura-admin-secret',
+      getToken: () async =>
+          'DIK9EhORiG6bT9KNpDth3K9j926oOPLCd3ON93YVh31gVlocQAiNasyniGcVX9gt',
+      // OR
+      // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
+    );
+
+    final Link link = authLink.concat(httpLink);
     final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
-        GraphQLClient(link: httpLink, cache: GraphQLCache()));
+        GraphQLClient(link: link, cache: GraphQLCache()));
+
     return GraphQLProvider(
       client: client,
       child: const MutationViewPage(),
@@ -24,43 +35,54 @@ class MutationViewPage extends StatefulWidget {
 }
 
 class _MutationViewPageState extends State<MutationViewPage> {
+  TextEditingController codeController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Countries ❄Mutation❄'),
       ),
-      body: Query(
-        options: QueryOptions(document: gql(r"""
-                  query GetContinent($code : ID!){
-                  continent(code:$code){
-                    name
-                  countries{
-                    name
+      body: Mutation(
+        options: MutationOptions(
+          document: gql(r'''
+                  mutation insertCountrie($name: String!, $code: String!) {
+                  insert_continents(objects: [{name: $name, code: $code}]) {
+                    returning {
+                      name
+                      code
+                    }
                   }
                   }
-                  }
-      """), variables: <String, dynamic>{"code": "AF"}),
-        builder: (QueryResult result,
-            {VoidCallback? refetch, FetchMore? fetchMore}) {
-          if (result.hasException) {
-            return Center(child: Text(result.exception.toString()));
-          }
-          if (result.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (result.data == null) {
-            return const Center(child: Text('No Data Found!'));
-          }
-          print(result.data?['continent']['countries']);
-          return ListView.builder(
-            itemCount: result.data?['continent']['countries'].length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title:
-                    Text(result.data?['continent']['countries'][index]['name']),
-              );
-            },
+      '''),
+          // onError: (OperationException error) {},
+          onCompleted: (dynamic resultData) {
+            print("onCompleted called");
+          },
+        ),
+        // variables: <String, dynamic>{"code": "AF"}),
+        builder: (insert, result) {
+          return Column(
+            children: [
+              TextField(
+                decoration: const InputDecoration(hintText: 'Name'),
+                controller: nameController,
+              ),
+              TextField(
+                decoration: const InputDecoration(hintText: 'Code'),
+                controller: codeController,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    insert(<String, dynamic>{
+                      "name": nameController.text,
+                      "code": codeController.text
+                    });
+                  },
+                  child: const Text('Submit')),
+              Text("Result : \n ${result?.data?.toString()}")
+            ],
           );
         },
       ),

@@ -1,52 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_graphql/providers/fetch_characters_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_graphql/page/characters_page.dart';
+import 'package:flutter_graphql/page/countries_page.dart';
 
-void main() {
-  runApp(const RickAndMorty());
-}
+import 'code_page.dart';
 
-class RickAndMorty extends StatelessWidget {
-  const RickAndMorty({super.key});
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      title: 'Flutter FormBuilder Demo',
       debugShowCheckedModeBanner: false,
-      home: ProviderScope(child: HomePage()),
+      home: _HomePage(),
     );
   }
 }
 
-class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+class _HomePage extends StatelessWidget {
+  const _HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Characters'),
-        ),
-        body: ref.watch(fetchCharactersProvider).maybeWhen(fetching: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }, fetched: (characters) {
-          return ListView(
-            children: characters
-                .map((e) => ListTile(
-                      title: Text(e.name!),
-                      leading: Image.network(
-                        e.image!,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
-                      subtitle: Text(e.status!),
-                    ))
-                .toList(),
-          );
-        }, orElse: () {
-          return Container();
-        }));
+  Widget build(BuildContext context) {
+    return CodePage(
+        title: 'Example Using GraphQL',
+        child: ListView(
+          children: [
+            ListTile(
+              title: const Text('Characters'),
+              trailing: const Icon(Icons.arrow_right_sharp),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const CharactersPage();
+                    },
+                  ),
+                );
+              },
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text('Countries'),
+              trailing: const Icon(Icons.arrow_right_sharp),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const CountriesPage();
+                    },
+                  ),
+                );
+              },
+            ),
+            const Divider(),
+          ],
+        ));
   }
 }

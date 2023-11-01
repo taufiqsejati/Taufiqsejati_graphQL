@@ -1,5 +1,5 @@
-import 'package:flutter_graphql/models/characters/character.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../models/characters/model_character.dart';
 import './fetch_character_state.dart';
 import 'package:dio/dio.dart';
 
@@ -33,7 +33,7 @@ query {
       List<dynamic> responseData =
           response.data['data']['characters']['results'];
       state = FetchCharactersState.fetched(
-          responseData.map((e) => Character.fromJson(e)).toList());
+          responseData.map((e) => MCharacter.fromJson(e)).toList());
     } on DioException catch (e) {
       state = FetchCharactersState.failed(e.message!);
     } catch (e) {

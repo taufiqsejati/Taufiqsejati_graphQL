@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/page/characters_page.dart';
+import 'package:flutter_graphql/page/characters_experiment_page.dart';
 import 'package:flutter_graphql/page/query_page.dart';
 import 'package:flutter_graphql/page/mutation_page.dart';
 
@@ -37,6 +38,20 @@ class _HomePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return const CharactersPage();
+                    },
+                  ),
+                );
+              },
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text('Characters Experiment'),
+              trailing: const Icon(Icons.arrow_right_sharp),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const CharactersExperimentPage();
                     },
                   ),
                 );

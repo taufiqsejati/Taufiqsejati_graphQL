@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'fetch_character_state.dart';
+part of 'fetch_countries_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FetchCharactersState {
+mixin _$FetchCountriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetching,
-    required TResult Function(List<MCharacter> characters) fetched,
+    required TResult Function(List<MCountries> countries) fetched,
     required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$FetchCharactersState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetching,
-    TResult? Function(List<MCharacter> characters)? fetched,
+    TResult? Function(List<MCountries> countries)? fetched,
     TResult? Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$FetchCharactersState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
-    TResult Function(List<MCharacter> characters)? fetched,
+    TResult Function(List<MCountries> countries)? fetched,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
@@ -69,17 +69,16 @@ mixin _$FetchCharactersState {
 }
 
 /// @nodoc
-abstract class $FetchCharactersStateCopyWith<$Res> {
-  factory $FetchCharactersStateCopyWith(FetchCharactersState value,
-          $Res Function(FetchCharactersState) then) =
-      _$FetchCharactersStateCopyWithImpl<$Res, FetchCharactersState>;
+abstract class $FetchCountriesStateCopyWith<$Res> {
+  factory $FetchCountriesStateCopyWith(
+          FetchCountriesState value, $Res Function(FetchCountriesState) then) =
+      _$FetchCountriesStateCopyWithImpl<$Res, FetchCountriesState>;
 }
 
 /// @nodoc
-class _$FetchCharactersStateCopyWithImpl<$Res,
-        $Val extends FetchCharactersState>
-    implements $FetchCharactersStateCopyWith<$Res> {
-  _$FetchCharactersStateCopyWithImpl(this._value, this._then);
+class _$FetchCountriesStateCopyWithImpl<$Res, $Val extends FetchCountriesState>
+    implements $FetchCountriesStateCopyWith<$Res> {
+  _$FetchCountriesStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -96,7 +95,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$FetchCharactersStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$FetchCountriesStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -110,7 +109,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'FetchCharactersState.initial()';
+    return 'FetchCountriesState.initial()';
   }
 
   @override
@@ -127,7 +126,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetching,
-    required TResult Function(List<MCharacter> characters) fetched,
+    required TResult Function(List<MCountries> countries) fetched,
     required TResult Function(String error) failed,
   }) {
     return initial();
@@ -138,7 +137,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetching,
-    TResult? Function(List<MCharacter> characters)? fetched,
+    TResult? Function(List<MCountries> countries)? fetched,
     TResult? Function(String error)? failed,
   }) {
     return initial?.call();
@@ -149,7 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
-    TResult Function(List<MCharacter> characters)? fetched,
+    TResult Function(List<MCountries> countries)? fetched,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -197,7 +196,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements FetchCharactersState {
+abstract class _Initial implements FetchCountriesState {
   factory _Initial() = _$InitialImpl;
 }
 
@@ -210,7 +209,7 @@ abstract class _$$FetchingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FetchingImplCopyWithImpl<$Res>
-    extends _$FetchCharactersStateCopyWithImpl<$Res, _$FetchingImpl>
+    extends _$FetchCountriesStateCopyWithImpl<$Res, _$FetchingImpl>
     implements _$$FetchingImplCopyWith<$Res> {
   __$$FetchingImplCopyWithImpl(
       _$FetchingImpl _value, $Res Function(_$FetchingImpl) _then)
@@ -224,7 +223,7 @@ class _$FetchingImpl implements _Fetching {
 
   @override
   String toString() {
-    return 'FetchCharactersState.fetching()';
+    return 'FetchCountriesState.fetching()';
   }
 
   @override
@@ -241,7 +240,7 @@ class _$FetchingImpl implements _Fetching {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetching,
-    required TResult Function(List<MCharacter> characters) fetched,
+    required TResult Function(List<MCountries> countries) fetched,
     required TResult Function(String error) failed,
   }) {
     return fetching();
@@ -252,7 +251,7 @@ class _$FetchingImpl implements _Fetching {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetching,
-    TResult? Function(List<MCharacter> characters)? fetched,
+    TResult? Function(List<MCountries> countries)? fetched,
     TResult? Function(String error)? failed,
   }) {
     return fetching?.call();
@@ -263,7 +262,7 @@ class _$FetchingImpl implements _Fetching {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
-    TResult Function(List<MCharacter> characters)? fetched,
+    TResult Function(List<MCountries> countries)? fetched,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -311,7 +310,7 @@ class _$FetchingImpl implements _Fetching {
   }
 }
 
-abstract class _Fetching implements FetchCharactersState {
+abstract class _Fetching implements FetchCountriesState {
   factory _Fetching() = _$FetchingImpl;
 }
 
@@ -321,12 +320,12 @@ abstract class _$$FetchedImplCopyWith<$Res> {
           _$FetchedImpl value, $Res Function(_$FetchedImpl) then) =
       __$$FetchedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MCharacter> characters});
+  $Res call({List<MCountries> countries});
 }
 
 /// @nodoc
 class __$$FetchedImplCopyWithImpl<$Res>
-    extends _$FetchCharactersStateCopyWithImpl<$Res, _$FetchedImpl>
+    extends _$FetchCountriesStateCopyWithImpl<$Res, _$FetchedImpl>
     implements _$$FetchedImplCopyWith<$Res> {
   __$$FetchedImplCopyWithImpl(
       _$FetchedImpl _value, $Res Function(_$FetchedImpl) _then)
@@ -335,13 +334,13 @@ class __$$FetchedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? characters = null,
+    Object? countries = null,
   }) {
     return _then(_$FetchedImpl(
-      null == characters
-          ? _value._characters
-          : characters // ignore: cast_nullable_to_non_nullable
-              as List<MCharacter>,
+      null == countries
+          ? _value._countries
+          : countries // ignore: cast_nullable_to_non_nullable
+              as List<MCountries>,
     ));
   }
 }
@@ -349,19 +348,19 @@ class __$$FetchedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchedImpl implements _Fetched {
-  _$FetchedImpl(final List<MCharacter> characters) : _characters = characters;
+  _$FetchedImpl(final List<MCountries> countries) : _countries = countries;
 
-  final List<MCharacter> _characters;
+  final List<MCountries> _countries;
   @override
-  List<MCharacter> get characters {
-    if (_characters is EqualUnmodifiableListView) return _characters;
+  List<MCountries> get countries {
+    if (_countries is EqualUnmodifiableListView) return _countries;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_characters);
+    return EqualUnmodifiableListView(_countries);
   }
 
   @override
   String toString() {
-    return 'FetchCharactersState.fetched(characters: $characters)';
+    return 'FetchCountriesState.fetched(countries: $countries)';
   }
 
   @override
@@ -370,12 +369,12 @@ class _$FetchedImpl implements _Fetched {
         (other.runtimeType == runtimeType &&
             other is _$FetchedImpl &&
             const DeepCollectionEquality()
-                .equals(other._characters, _characters));
+                .equals(other._countries, _countries));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_characters));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_countries));
 
   @JsonKey(ignore: true)
   @override
@@ -388,10 +387,10 @@ class _$FetchedImpl implements _Fetched {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetching,
-    required TResult Function(List<MCharacter> characters) fetched,
+    required TResult Function(List<MCountries> countries) fetched,
     required TResult Function(String error) failed,
   }) {
-    return fetched(characters);
+    return fetched(countries);
   }
 
   @override
@@ -399,10 +398,10 @@ class _$FetchedImpl implements _Fetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetching,
-    TResult? Function(List<MCharacter> characters)? fetched,
+    TResult? Function(List<MCountries> countries)? fetched,
     TResult? Function(String error)? failed,
   }) {
-    return fetched?.call(characters);
+    return fetched?.call(countries);
   }
 
   @override
@@ -410,12 +409,12 @@ class _$FetchedImpl implements _Fetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
-    TResult Function(List<MCharacter> characters)? fetched,
+    TResult Function(List<MCountries> countries)? fetched,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (fetched != null) {
-      return fetched(characters);
+      return fetched(countries);
     }
     return orElse();
   }
@@ -458,10 +457,10 @@ class _$FetchedImpl implements _Fetched {
   }
 }
 
-abstract class _Fetched implements FetchCharactersState {
-  factory _Fetched(final List<MCharacter> characters) = _$FetchedImpl;
+abstract class _Fetched implements FetchCountriesState {
+  factory _Fetched(final List<MCountries> countries) = _$FetchedImpl;
 
-  List<MCharacter> get characters;
+  List<MCountries> get countries;
   @JsonKey(ignore: true)
   _$$FetchedImplCopyWith<_$FetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -478,7 +477,7 @@ abstract class _$$FailedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailedImplCopyWithImpl<$Res>
-    extends _$FetchCharactersStateCopyWithImpl<$Res, _$FailedImpl>
+    extends _$FetchCountriesStateCopyWithImpl<$Res, _$FailedImpl>
     implements _$$FailedImplCopyWith<$Res> {
   __$$FailedImplCopyWithImpl(
       _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
@@ -508,7 +507,7 @@ class _$FailedImpl implements _Failed {
 
   @override
   String toString() {
-    return 'FetchCharactersState.failed(error: $error)';
+    return 'FetchCountriesState.failed(error: $error)';
   }
 
   @override
@@ -533,7 +532,7 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetching,
-    required TResult Function(List<MCharacter> characters) fetched,
+    required TResult Function(List<MCountries> countries) fetched,
     required TResult Function(String error) failed,
   }) {
     return failed(error);
@@ -544,7 +543,7 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetching,
-    TResult? Function(List<MCharacter> characters)? fetched,
+    TResult? Function(List<MCountries> countries)? fetched,
     TResult? Function(String error)? failed,
   }) {
     return failed?.call(error);
@@ -555,7 +554,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetching,
-    TResult Function(List<MCharacter> characters)? fetched,
+    TResult Function(List<MCountries> countries)? fetched,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -603,7 +602,7 @@ class _$FailedImpl implements _Failed {
   }
 }
 
-abstract class _Failed implements FetchCharactersState {
+abstract class _Failed implements FetchCountriesState {
   factory _Failed(final String error) = _$FailedImpl;
 
   String get error;

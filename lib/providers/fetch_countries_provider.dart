@@ -6,12 +6,12 @@ import 'package:dio/dio.dart';
 final fetchCountriesProvider =
     StateNotifierProvider<FetchCountriesProvider, FetchCountriesState>((ref) =>
         FetchCountriesProvider(FetchCountriesState.initial())
-          ..fetchCountries(ref, ref));
+          ..fetchCountries());
 
 class FetchCountriesProvider extends StateNotifier<FetchCountriesState> {
   FetchCountriesProvider(super.state);
 
-  fetchCountries(args1, args2) async {
+  fetchCountries() async {
     state = FetchCountriesState.fetching();
     try {
       Dio dio = Dio();

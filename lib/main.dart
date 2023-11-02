@@ -1,22 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_graphql/cubit/Cubit.dart';
 import 'package:flutter_graphql/page/characters_page.dart';
 import 'package:flutter_graphql/page/characters_experiment_page.dart';
 import 'package:flutter_graphql/page/query_page.dart';
 import 'package:flutter_graphql/page/mutation_page.dart';
+import 'package:flutter_graphql/utils/bloc_observer.dart';
+import 'package:flutter_graphql/utils/http.dart';
 
 import 'code_page.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initApiConfig();
+
+  Bloc.observer = MyAppObserver();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter FormBuilder Demo',
-      debugShowCheckedModeBanner: false,
-      home: _HomePage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetProductCategoryCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CreateProductCategoryCubit(),
+        ),
+      ],
+      child: const MaterialApp(
+        title: 'Flutter FormBuilder Demo',
+        debugShowCheckedModeBanner: false,
+        home: _HomePage(),
+      ),
     );
   }
 }

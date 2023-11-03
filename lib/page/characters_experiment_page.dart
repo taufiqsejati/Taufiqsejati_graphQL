@@ -35,13 +35,16 @@ class _CharactersExperimentPageViewState
   Widget build(BuildContext context) {
     TextEditingController codeController = TextEditingController();
     TextEditingController nameController = TextEditingController();
+    String? result = '';
 
     return MultiBlocListener(
       listeners: [
         BlocListener<CreateProductCategoryCubit, CreateProductCategoryState>(
             listener: (context, state) {
           if (state is CreateProductCategoryFailed) {
-            print('Failed');
+            print('Failed ${state.errorMessage}');
+            result = state.errorMessage;
+            setState(() {});
           } else if (state is CreateProductCategorySuccess) {
             print(state.successResponse);
           }
@@ -147,7 +150,7 @@ class _CharactersExperimentPageViewState
                         );
                       }
                       if (state is GetProductCategoryFailed) {
-                        return const Center(child: Text('Gagal'));
+                        return Center(child: Text(state.errorMessage));
                       }
                       if (state is GetProductCategorySuccess) {
                         return ListView(
@@ -196,32 +199,46 @@ class _CharactersExperimentPageViewState
                               ),
                             );
                           } else {
-                            return Container(
-                              width: double.infinity,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    print(nameController.text);
-                                    print(codeController.text);
-                                    context
-                                        .read<CreateProductCategoryCubit>()
-                                        .create(nameController.text,
-                                            codeController.text);
-                                    // print(fetchCountriesProvider.name);
-                                    // Provider.of<FetchCountriesProvider>(context);
-                                    // insert(<String, dynamic>{
-                                    //   "name": nameController.text,
-                                    //   "code": codeController.text
-                                    // });
-                                    // nameController.clear();
-                                    // codeController.clear();
-                                    // refetch?.call();
-                                  },
-                                  child: const Text('Submit')),
+                            return Column(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24),
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        if (nameController.text.isEmpty &&
+                                            codeController.text.isEmpty) {
+                                        } else {
+                                          print(nameController.text);
+                                          print(codeController.text);
+                                          context
+                                              .read<
+                                                  CreateProductCategoryCubit>()
+                                              .create(nameController.text,
+                                                  codeController.text);
+                                          // print(fetchCountriesProvider.name);
+                                          // Provider.of<FetchCountriesProvider>(context);
+                                          // insert(<String, dynamic>{
+                                          //   "name": nameController.text,
+                                          //   "code": codeController.text
+                                          // });
+                                          // nameController.clear();
+                                          // codeController.clear();
+                                          // refetch?.call();
+                                        }
+                                      },
+                                      child: const Text('Submit')),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                    "Result : \n ${state is CreateProductCategorySuccess ? 'Sukses' : state is CreateProductCategoryFailed ? state.errorMessage : 'null'}"),
+                              ],
                             );
                           }
-                        })
+                        }),
                       ],
                     ),
                   )

@@ -464,6 +464,12 @@ class CountriesServices {
       );
 
       if (response.statusCode == HttpStatus.ok) {
+        if (response.data['errors'] != null) {
+          throw MErrorResponse(
+            statusMessage: response.data['errors'][0]['message'].toString(),
+            statusCode: response.statusCode,
+          );
+        }
         List<dynamic> result =
             response.data['data']['insert_continents']['returning'];
         return result.map((e) => MCountries.fromJson(e)).toList();
